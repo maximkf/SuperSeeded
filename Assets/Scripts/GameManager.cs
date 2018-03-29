@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour {
 	public Player[] playerPrefabs;
 	public List <Player> players = new List<Player>();
 	public int playersConnected {get; set;}
-	public GameObject groundPlane, bumpReadyIcon, burstPrefab;
+	public GameObject groundPlane, bumpReadyIcon;
 	public Bump bumpPrefab;
 	public UIManager canvas;
 	public RandomTexture patternShuffle;
@@ -73,11 +73,11 @@ public class GameManager : MonoBehaviour {
 				break;
 			case GameState.Start :
 				ring.lerpRingColor();
-				canvas.fadeDirections(hasMovement());
 				if(singlePlayer)
 					autoTarget();
 				if(title)
 					canvas.updateDirections(playersConnected);
+				canvas.fadeDirections(hasMovement());
 				break;
 			case GameState.Reset:
 				currentGameState = GameState.Start;
@@ -113,6 +113,8 @@ public class GameManager : MonoBehaviour {
 			int j = Random.Range(0, playerPrefabs.Length);//pick a random fruit
 			Player player = Instantiate(playerPrefabs[j], spawnPosition[i].position, Random.rotation) as Player;//instance player
 			player.setupPlayer(i, title);//run player setup
+			player.burstSound = audioManager.ringOutSound;
+			player.playerWalks = audioManager.playerAudio;
 			players.Add(player);//add to players array
 		}
 	}
@@ -138,6 +140,10 @@ public class GameManager : MonoBehaviour {
 
 	public bool hasMovement(){
 		return (players[0].moving || players[1].moving)? true: false;
+	}
+
+	public void playerBumpSound(int playerNum){
+		players[playerNum].bumpSound = audioManager.getBumpClip();
 	}
 
 	void toggleCameras(){
@@ -187,7 +193,7 @@ public class GameManager : MonoBehaviour {
 
 	bool TimedOut(){
 		foreach(Player p in players){
-			if(p.moving)
+			if(p.input.magnitude > 0.01f)
 				idleTime = 0;
 		}
 		idleTime += Time.deltaTime;

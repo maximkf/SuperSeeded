@@ -12,12 +12,12 @@ public class UIManager : MonoBehaviour {
 	public GameObject[] playerInfo;
 	public List<GameObject> keyboardInfo = new List<GameObject>();
 	public List<GameObject> gamepadInfo = new List<GameObject>();
-	public float waitTime, fadeRate;
+	public float fadeTimer = 10;
 	public Animator bumpAnimator;
 
 	private Animator animator;
 	private float fadeValue;
-	private float waitTimer;
+	private float fadeTime;
 
 	void Start(){
 		Initialize();
@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour {
 			canvas = GameObject.Find("Canvas");
 			animator = canvas.GetComponent<Animator>();
 			animator.SetFloat("fade", 1.0f);
-			waitTimer = waitTime;
+			fadeTime = 11.0f;
 			playerInfo = GameObject.FindGameObjectsWithTag("PlayerUI");
 			foreach(GameObject g in playerInfo){
 				if(g.name == "Keyboard")
@@ -36,6 +36,10 @@ public class UIManager : MonoBehaviour {
 				if(g.name == "Gamepad")
 					gamepadInfo.Add(g);
 			}
+	}
+
+	void Update(){
+
 	}
 
 	public void updateDirections(int i){
@@ -68,9 +72,29 @@ public class UIManager : MonoBehaviour {
 	}
 
 	public void fadeDirections(bool movement){
-		animator.SetBool("InfoOff", movement);
-		bool bumpOn = (animator.GetCurrentAnimatorStateInfo(0).IsName("InfoOff")) ? false : true;
-		bumpAnimator.SetBool("Toggle", bumpOn);
+
+
+		if(movement){
+			fadeValue -= 0.02f;
+			fadeTime = 0;
+		}else{
+			fadeTime += Time.deltaTime;
+		}
+
+		if(!movement && fadeTime > fadeTimer){
+			fadeValue += 0.02f;
+			bumpAnimator.SetBool("Toggle", true);
+		}
+
+		if(fadeValue < 0){
+			fadeValue = 0;
+			bumpAnimator.SetBool("Toggle", false);
+		}
+
+		if(fadeValue > 1)
+			fadeValue = 1;
+
+		animator.SetFloat("fade", fadeValue);
 	}
 
 	public void reset(){

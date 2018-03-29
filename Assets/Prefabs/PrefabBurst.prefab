@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4161635955531168}
   - component: {fileID: 114004245326062082}
   - component: {fileID: 82431443236570956}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: PrefabBurst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,12 +139,10 @@ MonoBehaviour:
   fadeAmount: 0.18
   minParticles: 12
   maxParticles: 20
-  particlePrefab: {fileID: 0}
-  defaultParticle: {fileID: 1962425584630870, guid: 0ffcbf8c62a584b0d99fe0f285d1a704,
+  particlePrefab: {fileID: 1962425584630870, guid: 0ffcbf8c62a584b0d99fe0f285d1a704,
     type: 2}
   burst: 0
   monoColor: 1
   burstColor: {r: 0.30103803, g: 0.3708388, b: 0.7058823, a: 1}
-  burstSound: {fileID: 8300000, guid: 4262b6a0774d4459283db8e451c35e75, type: 3}
   timerEnded: 0
   burstTimer: 3

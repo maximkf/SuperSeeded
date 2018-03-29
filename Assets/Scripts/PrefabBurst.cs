@@ -6,10 +6,9 @@ public class PrefabBurst : MonoBehaviour {
 
 	public float minVelocity, maxVelocity, scaleMax, colorOffset, fadeAmount;
 	public int minParticles, maxParticles;
-	public GameObject particlePrefab, defaultParticle;
+	public GameObject particlePrefab;
 	public bool burst, monoColor;
 	public Color burstColor;
-	public AudioClip burstSound;
 	public bool timerEnded = false;
 	public float burstTimer;
 
@@ -21,12 +20,6 @@ public class PrefabBurst : MonoBehaviour {
 		burst = true;
 		burstTime = 0;
 		particlesToSpawn = Random.Range(minParticles, maxParticles);
-		AudioSource burstAudio = GetComponent<AudioSource>();
-		burstAudio.pitch = Random.Range(0.8f,1.3f);
-		burstAudio.PlayOneShot(burstSound);
-
-		if(particlePrefab == null)
-			particlePrefab = defaultParticle;
 	}
 
 	// Update is called once per frame

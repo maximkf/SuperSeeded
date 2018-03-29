@@ -20,9 +20,9 @@ public class Rage : MonoBehaviour {
 		player = GetComponent<Player>();
 		moveScript = GetComponent<Move>();
 
-		// ogBumpMag = player.bumpMagnitude;
+		ogBumpMag = player.bumpMagnitude;
 		ogMoveSpeed = moveScript.moveSpeed;
-		// ogBumpScale = player.bumpScale;
+		ogBumpScale = player.bumpScale;
 	}
 
 	// Update is called once per frame
@@ -33,21 +33,21 @@ public class Rage : MonoBehaviour {
 		}
 
 		if(angryTime > angryTimer && angry){
-			// player.bumpMagnitude = ogBumpMag;
+			player.bumpMagnitude = ogBumpMag;
 			moveScript.moveSpeed = ogMoveSpeed;
-			// moveScript.bumpCounter = 0;
+			moveScript.bumpCounter = 0;
 			Destroy(angrySign.gameObject);
 			angry = false;
 		}
 
-		// if(moveScript.bumpCounter >= 3 && !angry){
-		// 	angrySign = Instantiate(angerSymbol, angerSpriteOffset, Quaternion.Euler(90,0,0));
-		// 	angrySign.GetComponent<FollowObject>().objectToFollow = player.gameObject;
-		// 	player.bumpMagnitude *= bumpBoost;
-		// 	player.bumpScale *= bumpBoost;
-		// 	moveScript.moveSpeed *= moveBoost;
-		// 	angry = true;
-		// }
+		if(moveScript.bumpCounter >= 3 && !angry){
+			angrySign = Instantiate(angerSymbol, angerSpriteOffset, Quaternion.Euler(90,0,0));
+			angrySign.GetComponent<FollowObject>().objectToFollow = player.gameObject;
+			player.bumpMagnitude *= bumpBoost;
+			player.bumpScale *= bumpBoost;
+			moveScript.moveSpeed *= moveBoost;
+			angry = true;
+		}
 	}
 
 	void OnDestroy(){

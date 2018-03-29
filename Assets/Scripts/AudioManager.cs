@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
 
+
+	public AudioClip ringOutSound;
 	public float winClipLength;
 	public AudioClip[] winAudio;
+	public AudioClip[] playerAudio;
+	public AudioClip[] bumpAudio;
 
 	private AudioSource audioSource;
 
@@ -30,5 +34,9 @@ public class AudioManager : MonoBehaviour {
 	void randomAudioSequence(){
 		// audioSource.clip = winAudio[Random.Range(0,winAudio.Length)];
 		audioSource.PlayOneShot(winAudio[Random.Range(0,winAudio.Length)]);
+	}
+
+	public AudioClip getBumpClip(){
+		return bumpAudio[Random.Range(0,bumpAudio.Length)];
 	}
 }

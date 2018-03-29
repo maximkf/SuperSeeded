@@ -40,7 +40,6 @@ GameObject:
   - component: {fileID: 64214425607051892}
   - component: {fileID: 114495115977618508}
   - component: {fileID: 114844249291900744}
-  - component: {fileID: 114466163611783938}
   - component: {fileID: 82817785541762638}
   - component: {fileID: 114347044228144784}
   m_Layer: 8
@@ -345,7 +344,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1316013017089648}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee0f081ff81134524b8984122e89d760, type: 3}
   m_Name: 
@@ -357,25 +356,6 @@ MonoBehaviour:
   angerSymbol: {fileID: 1543903893546340, guid: 5f52942ba2ad44b2f87e0697342fd307,
     type: 2}
   angerSpriteOffset: {x: -1.34, y: 2, z: 0}
---- !u!114 &114466163611783938
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1316013017089648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f8562de4a93d4316acc7c97ff0e4e69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bumpScale: 1.2
-  actionChargeRate: 0.25
-  chargeLimit: 14
-  actionInput: 0
-  playerNum: 0
-  playerParticle: {fileID: 0}
-  burstPrefab: {fileID: 0}
-  playerColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114495115977618508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -388,15 +368,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 0
+  bumpMagnitude: 12
+  bumpCooldown: 1
+  bumpScale: 1.2
   playerColor: {r: 0.9852941, g: 0.91835207, b: 0.55060554, a: 1}
   usingKeyboard: 0
   lost: 0
   moving: 0
   rigidbody: {fileID: 0}
-  deathParticle: {fileID: 1962425584630870, guid: 0ffcbf8c62a584b0d99fe0f285d1a704,
+  input: {x: 0, y: 0, z: 0}
+  burstPrefab: {fileID: 114004245326062082, guid: 12bc929f5fcea4ee188fec7df999856c,
     type: 2}
-  bumpParticle: {fileID: 1516144308428154, guid: 4273a522f388d406382d5c814b15fb30,
+  bumpPrefab: {fileID: 114188113015441478, guid: 4d2fd0a8999084061bfc1257d999c63e,
     type: 2}
+  titleMaterial: {fileID: 2100000, guid: ff2c7537c17e347fcb92f3d5b29ecfcb, type: 2}
+  burstSound: {fileID: 0}
+  bumpSound: {fileID: 0}
+  playerWalks: []
+  audioSource: {fileID: 0}
+  moveScript: {fileID: 0}
 --- !u!114 &114844249291900744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -408,16 +398,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6036d2ddab94b1390aa29072ee630c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 14
+  bumpCounter: 0
+  moveSpeed: 11
+  bumpForce: 1
   targetTimer: 0.2
   walkSoundRate: 2
   autoTarget: 0
-  dash: 0
-  actionInput: 0
   target: {fileID: 0}
-  playerWalks:
-  - {fileID: 8300000, guid: eb8d6cd8239574cf59808341dcef365c, type: 3}
-  - {fileID: 8300000, guid: f99c460c1dea54f9b9efe2df2693b81c, type: 3}
-  - {fileID: 8300000, guid: e5185bcd5144947abae8029af6a1c72d, type: 3}
-  - {fileID: 8300000, guid: eac90a1a7392947a98e99a4bc2586ab2, type: 3}
-  - {fileID: 8300000, guid: 3eac0b432cfc34041a664ad05cc5bb2a, type: 3}
+  moveVelocity: {x: 0, y: 0, z: 0}

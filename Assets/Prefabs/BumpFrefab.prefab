@@ -40,7 +40,6 @@ GameObject:
   - component: {fileID: 111327469492958690}
   - component: {fileID: 114188113015441478}
   - component: {fileID: 114991596599447338}
-  - component: {fileID: 82461507980071806}
   m_Layer: 0
   m_Name: BumpFrefab
   m_TagString: Untagged
@@ -114,86 +113,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1030269793487410}
   m_Mesh: {fileID: 4300000, guid: d4b5e3a6d62484255a2f29a819272fa0, type: 3}
---- !u!82 &82461507980071806
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1273541247741194}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!111 &111327469492958690
 Animation:
   m_ObjectHideFlags: 1
@@ -223,12 +142,7 @@ MonoBehaviour:
   playerNum: 0
   bumpMagnitude: 0
   falloff: 1.6
-  bumpScale: 0
-  bumpAudio:
-  - {fileID: 8300000, guid: 68b0cf931babb4b888f98229fbd8d767, type: 3}
-  - {fileID: 8300000, guid: 6f1c57733b1264e3fbde65366ae039b8, type: 3}
-  - {fileID: 8300000, guid: a3a84a3522c404b1484ff6d4e634121e, type: 3}
-  - {fileID: 8300000, guid: 279c9e68acac34d099e4d6fcca208098, type: 3}
+  scaleFactor: 0.08
 --- !u!114 &114991596599447338
 MonoBehaviour:
   m_ObjectHideFlags: 1
