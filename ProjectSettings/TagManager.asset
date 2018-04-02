@@ -3,10 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Wall
-  - PlayerUI
-  - Ring
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -17,11 +14,11 @@ TagManager:
   - 
   - 
   - Player
-  - Projectile
-  - Wall
-  - Burst
-  - Strike
-  - Ring
+  - Part
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
