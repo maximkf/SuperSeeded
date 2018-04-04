@@ -4,10 +4,10 @@ Shader "Unlit/SpecialFX/NoiseDisplace"
 {
     Properties
     {
-        _MainTex ("Albedo Texture", 2D) = "white" {}
-        _TintColor("Tint Color", Color) = (1,1,1,1)
+        _MainTex ("Base (RGB)", 2D) = "white" {}
+        _Color("Main Color", Color) = (1,1,1,1)
         _Transparency("Transparency", Range(0.0,1.0)) = 0.25
-        _CutoutThresh("Cutout Threshold", Range(0.0,1.0)) = 0.2
+      //_CutoutThresh("Cutout Threshold", Range(0.0,1.0)) = 0.2
         _Distance("Distance", Float) = 1
         _Amplitude("Amplitude", Float) = 1
         _Speed ("Speed", Float) = 1
@@ -16,7 +16,7 @@ Shader "Unlit/SpecialFX/NoiseDisplace"
 
     SubShader
     {
-        Tags {"Queue"="Transparent" "RenderType"="Transparent" }
+        Tags {"Queue"="Geometry" "RenderType"="Opaque" }
         LOD 100
 
         ZWrite Off
@@ -24,11 +24,18 @@ Shader "Unlit/SpecialFX/NoiseDisplace"
 
         Pass
         {
-            CGPROGRAM
+          Tags {"LightMode" = "ForwardBase"}
+          CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
+            #pragma multi_compile_fwdbase
+            #pragma fragmentoption ARB_fog_exp2
+            #pragma fragmentoption ARB_precision_hint_fastest
 
             #include "UnityCG.cginc"
+            #include "AutoLight.cginc"
+
+            half4 _Color;
 
             struct appdata
             {
@@ -41,6 +48,8 @@ Shader "Unlit/SpecialFX/NoiseDisplace"
             {
                 float2 uv : TEXCOORD0;
                 float4 vertex : SV_POSITION;
+                half4 color : COLOR;
+                LIGHTING_COORDS(1,2)
             };
 
             sampler2D _MainTex;
@@ -75,24 +84,25 @@ Shader "Unlit/SpecialFX/NoiseDisplace"
 						}
 
 
-						v2f vert (appdata v)
+						v2f vert (appdata_tan v)
 						{
               v2f o;
-              v.vertex.xyz = v.normal * noise(_Time.y * _Speed + v.vertex.y * _Amplitude) * _Distance * _Amount;
+              v.vertex.x += noise(_Time.y * _Speed + v.vertex.y * _Amplitude) * _Distance * _Amount;
               o.vertex = UnityObjectToClipPos(v.vertex);
-              o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+              o.uv = TRANSFORM_TEX (v.texcoord, _MainTex).xy;
               return o;
 						}
 
-            fixed4 frag (v2f i) : SV_Target
+            fixed4 frag (v2f i) : SV_TARGET
             {
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv) + _TintColor;
                 col.a = _Transparency;
-                clip(col.r - _CutoutThresh);
-                return col;
+                fixed atten = LIGHT_ATTENUATION(i);	// Light attenuation + shadows.
+      					return col * atten;
             }
             ENDCG
         }
     }
+
 }

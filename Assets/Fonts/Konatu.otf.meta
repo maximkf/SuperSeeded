@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 8d2f3cce74aa34bd3a4ca2ec295f0a1a
+timeCreated: 1522853069
+licenseType: Pro
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Konatu
+  fontNames:
+  - Konatu
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

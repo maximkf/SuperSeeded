@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 605c655f7eda74fcf943999eb2595cb8
+timeCreated: 1522851253
+licenseType: Pro
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Nanami Rounded
+  fontNames:
+  - Nanami Rounded
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
