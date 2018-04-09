@@ -46,10 +46,9 @@ namespace InControl
 		}
 
 
-		public override bool IsKnown
+		public bool IsKnown
 		{
 			get { return false; }
 		}
-	}	
+	}
 }
-
