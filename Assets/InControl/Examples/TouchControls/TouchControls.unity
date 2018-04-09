@@ -147,19 +147,12 @@ MonoBehaviour:
   target: 19
   allowSlideToggle: 1
   toggleOnLeave: 0
+  pressureSensitive: 0
   button:
     idleSprite: {fileID: 21300000, guid: f178146a44de340829e1c25c4ee4c072, type: 3}
     busySprite: {fileID: 21300000, guid: f178146a44de340829e1c25c4ee4c072, type: 3}
-    idleColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0.5
-    busyColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
+    idleColor: {r: 1, g: 1, b: 1, a: 0.5}
+    busyColor: {r: 1, g: 1, b: 1, a: 1}
     shape: 0
     sizeUnitType: 0
     size: {x: 15, y: 15}
@@ -306,6 +299,7 @@ MonoBehaviour:
   offset: {x: 20, y: 20}
   areaUnitType: 0
   activeArea:
+    serializedVersion: 2
     x: 0
     y: 0
     width: 50
@@ -316,19 +310,23 @@ MonoBehaviour:
   lowerDeadZone: 0.1
   upperDeadZone: 0.9
   inputCurve:
+    serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 1
       outSlope: 1
-      tangentMode: 10
-    - time: 1
+      tangentMode: 34
+    - serializedVersion: 2
+      time: 1
       value: 1
       inSlope: 1
       outSlope: 1
-      tangentMode: 10
+      tangentMode: 34
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   allowDragging: 0
   allowDraggingAxis: 0
   snapToInitialTouch: 1
@@ -337,16 +335,8 @@ MonoBehaviour:
   ring:
     idleSprite: {fileID: 21300000, guid: 6244232c1f7b94049aa3fc49270b0e36, type: 3}
     busySprite: {fileID: 21300000, guid: 6244232c1f7b94049aa3fc49270b0e36, type: 3}
-    idleColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0.5
-    busyColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
+    idleColor: {r: 1, g: 1, b: 1, a: 0.5}
+    busyColor: {r: 1, g: 1, b: 1, a: 1}
     shape: 0
     sizeUnitType: 0
     size: {x: 20, y: 20}
@@ -355,16 +345,8 @@ MonoBehaviour:
   knob:
     idleSprite: {fileID: 21300000, guid: 54a1d28b302b6484d8633cc09baf1238, type: 3}
     busySprite: {fileID: 21300000, guid: 54a1d28b302b6484d8633cc09baf1238, type: 3}
-    idleColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0.5
-    busyColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
+    idleColor: {r: 1, g: 1, b: 1, a: 0.5}
+    busyColor: {r: 1, g: 1, b: 1, a: 1}
     shape: 0
     sizeUnitType: 0
     size: {x: 10, y: 10}
@@ -418,19 +400,12 @@ MonoBehaviour:
   target: 20
   allowSlideToggle: 1
   toggleOnLeave: 0
+  pressureSensitive: 0
   button:
     idleSprite: {fileID: 21300000, guid: 407bcdfe0e71249c998e8c6204913e70, type: 3}
     busySprite: {fileID: 21300000, guid: 407bcdfe0e71249c998e8c6204913e70, type: 3}
-    idleColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0.5
-    busyColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
+    idleColor: {r: 1, g: 1, b: 1, a: 0.5}
+    busyColor: {r: 1, g: 1, b: 1, a: 1}
     shape: 0
     sizeUnitType: 0
     size: {x: 15, y: 15}
@@ -543,6 +518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areaUnitType: 0
   activeArea:
+    serializedVersion: 2
     x: 25
     y: 25
     width: 50
@@ -647,9 +623,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logDebugInfo: 1
   invertYAxis: 0
-  enableXInput: 0
   useFixedUpdate: 0
   dontDestroyOnLoad: 0
+  suspendInBackground: 0
+  enableICade: 0
+  enableXInput: 0
+  xInputOverrideUpdateRate: 0
+  xInputUpdateRate: 0
+  xInputOverrideBufferSize: 0
+  xInputBufferSize: 0
+  enableNativeInput: 0
+  nativeInputEnableXInput: 1
+  nativeInputPreventSleep: 0
+  nativeInputOverrideUpdateRate: 0
+  nativeInputUpdateRate: 0
   customProfiles: []
 --- !u!4 &1364669223
 Transform:
@@ -733,19 +720,12 @@ MonoBehaviour:
   target: 21
   allowSlideToggle: 1
   toggleOnLeave: 0
+  pressureSensitive: 0
   button:
     idleSprite: {fileID: 0}
     busySprite: {fileID: 0}
-    idleColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 0.5
-    busyColor:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
+    idleColor: {r: 1, g: 1, b: 1, a: 0.5}
+    busyColor: {r: 1, g: 1, b: 1, a: 1}
     shape: 1
     sizeUnitType: 0
     size: {x: 50, y: 100}

@@ -69,8 +69,6 @@ namespace InControl
 			"InControl.LogitechF710ModeXWinProfile",
 			"InControl.LogitechModeDAmazonProfile",
 			"InControl.LogitechModeXAmazonProfile",
-			"InControl.LogitechRumblePad2MacProfile",
-			"InControl.LogitechRumblePad2WinProfile",
 			"InControl.LogitechWingManWinProfile",
 			"InControl.MadCatzCTRLRAmazonProfile",
 			"InControl.MadCatzCTRLRAndroidProfile",
