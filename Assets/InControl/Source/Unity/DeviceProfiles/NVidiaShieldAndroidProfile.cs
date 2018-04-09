@@ -114,22 +114,22 @@ namespace InControl
 					Target = InputControlType.DPadRight,
 					Source = Analog4,
 					SourceRange = InputControlMapping.Range.Positive,
-					TargetRange = InputControlMapping.Range.Positive
+					// TargetRange = InputControlMapping.Range.Positive
 				},
 				new InputControlMapping {
 					Handle = "DPad Up",
 					Target = InputControlType.DPadUp,
 					Source = Analog5,
-					SourceRange = InputControlMapping.Range.Negative,
-					TargetRange = InputControlMapping.Range.Negative,
+					// SourceRange = InputControlMapping.Range.Negative,
+					// TargetRange = InputControlMapping.Range.Negative,
 					Invert = true
 				},
 				new InputControlMapping {
 					Handle = "DPad Down",
 					Target = InputControlType.DPadDown,
 					Source = Analog5,
-					SourceRange = InputControlMapping.Range.Positive,
-					TargetRange = InputControlMapping.Range.Positive
+					// SourceRange = InputControlMapping.Range.Positive,
+					// TargetRange = InputControlMapping.Range.Positive
 				},
 				new InputControlMapping {
 					Handle = "Left Trigger",
@@ -145,4 +145,3 @@ namespace InControl
 		}
 	}
 }
-
