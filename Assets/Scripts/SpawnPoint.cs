@@ -9,6 +9,6 @@ public class SpawnPoint : MonoBehaviour {
 	public void spawnObject (GameObject g) {
 		GameObject go = Instantiate(g, transform.position, Random.rotation);
 		go.transform.localScale = this.transform.localScale;
-		GameManager.Instance.activePlayers.Add(go);
+		GameManager.Instance.activePlayers.Add(go.GetComponent<PlayerData>());
 	}
 }

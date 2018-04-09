@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 114226262176314676}
   - component: {fileID: 114540476931477092}
   - component: {fileID: 54306188317729896}
+  - component: {fileID: 114026520315156640}
   m_Layer: 8
   m_Name: BananaA
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,7 +43,7 @@ GameObject:
   - component: {fileID: 64357878225968086}
   m_Layer: 8
   m_Name: banana
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,6 +84,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -98,6 +100,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -134,14 +137,29 @@ MeshCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1761426153771716}
-  m_Material: {fileID: 13400000, guid: 1ac1497d0f08c444d95967a0c43f4ca3, type: 2}
+  m_Material: {fileID: 13400000, guid: c6c74422f029e4d588c383d3c6b8b1e0, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Convex: 1
-  m_InflateMesh: 0
+  m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 508f33ed7625d43dd8b696f8c1ab1d2e, type: 3}
+--- !u!114 &114026520315156640
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1239326271468362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a52deec93cbd42bfb2cab42e942df20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  growTime: 0.12
+  growMultiplier: 2
+  grow: 0
+  bumpPrefab: {fileID: 1647763495091988, guid: fd4e9b7c7e829484e885bbc81a492967, type: 2}
 --- !u!114 &114226262176314676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,8 +174,11 @@ MonoBehaviour:
   playerColor: {r: 0.95294124, g: 0.89019614, b: 0.2901961, a: 1}
   playerNum: 0
   moveSpeed: 14
-  bumpMagnitude: 0
+  dashSpeed: 0
+  bumpMagnitude: 12
   lost: 0
+  burstPrefab: {fileID: 114103979013594792, guid: 12bc929f5fcea4ee188fec7df999856c,
+    type: 2}
 --- !u!114 &114540476931477092
 MonoBehaviour:
   m_ObjectHideFlags: 1

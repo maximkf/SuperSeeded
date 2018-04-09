@@ -12,6 +12,7 @@ public class PlayerInput : MonoBehaviour {
 	private bool selectScene, gameOn;
 	private PlayerSelect playerSelect;
 	private Move moveScript;
+	private Grow growScript;
 	private Vector3 moveDirection;
 	// Use this for initialization
 	void Start () {
@@ -31,6 +32,7 @@ public class PlayerInput : MonoBehaviour {
 		playerNum = num;
 		getInputDevice();
 		moveScript = GetComponent<Move>();
+		growScript = GetComponent<Grow>();
 		gameOn = true;
 	}
 
@@ -39,10 +41,10 @@ public class PlayerInput : MonoBehaviour {
 		if(InputManager.Devices.Count != lastDeviceCount)
 			getInputDevice();
 
-		if(selectScene)
+		if(inputDevice != null && selectScene)
 			UpdatePlayerSelect();
 
-		if(gameOn)
+		if(inputDevice != null && gameOn)
 			UpdatePlayerActions();
 	}
 
@@ -72,10 +74,16 @@ public class PlayerInput : MonoBehaviour {
 	void UpdatePlayerActions(){
 		// if(inputDevice.LeftStick.HasChanged || inputDevice.DPad.HasChanged ){
 			// print("check");
-			moveDirection = Vector3.right * inputDevice.Direction.X
-			+ Vector3.forward * inputDevice.Direction.Y;
+		moveDirection = Vector3.right * inputDevice.Direction.X
+				+ Vector3.forward * inputDevice.Direction.Y;
+		if(!inputDevice.Action1.WasPressed){
 		// }
-		moveScript.doMove(moveDirection);
+			moveScript.doMove(moveDirection);
+		}else if(inputDevice.Action1.WasPressed){
+			growScript.grow = true;
+			// moveScript.doDash(moveDirection);
+		}
+
 	}
 
 }

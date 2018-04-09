@@ -10,9 +10,10 @@ public class GameManager : SingletonPersistent<GameManager> {
 	public int playersConnected;
 	public GameObject[] playersToSpawn = new GameObject [2];
 	public SpawnPoint[] spawnPoints = new SpawnPoint [2];
-	public List <GameObject> activePlayers = new List<GameObject>();
+	public List <PlayerData> activePlayers = new List<PlayerData>();
 
 	private bool playersSpawned;
+	private GameObject winningPlayer;
 	// Use this for initialization
 	void Start () {
 
@@ -31,6 +32,7 @@ public class GameManager : SingletonPersistent<GameManager> {
 				GameReady();
 			break;
 			case GameState.GameStart:
+				GameStart();
 			break;
 			default:
 			break;
@@ -62,8 +64,23 @@ public class GameManager : SingletonPersistent<GameManager> {
 
 		if(UIManager.Instance.countDownOver){
 			currentGameState = GameState.GameStart;
-			Invoke("SpawnPlayers", 0);
 		}
+	}
+
+	void GameStart(){
+		if(!playersSpawned){
+			SpawnPlayers();
+		}
+	}
+
+	public void findWinningPlayer(int loserNum){
+		foreach(PlayerData pd in activePlayers){
+			if(pd.playerNum != loserNum){
+				winningPlayer = pd.gameObject;
+				print(winningPlayer.name);
+			}
+		}
+		currentGameState = GameState.GameEnd;
 	}
 
 	void SpawnPlayers(){
@@ -74,7 +91,8 @@ public class GameManager : SingletonPersistent<GameManager> {
 				spawnPoints[i] = sp.GetComponent<SpawnPoint>();
 			}
 			spawnPoints[i].spawnObject(playersToSpawn[i]);
-			activePlayers[i].GetComponent<PlayerData>().playerNum = i;
+			activePlayers[i].playerNum = i;
 		}
+		playersSpawned = true;
 	}
 }
