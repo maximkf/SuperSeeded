@@ -156,13 +156,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5426dc83f599b443c9cca9547ce4de5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerColor: {r: 0.98823535, g: 0, b: 0.21176472, a: 1}
+  playerColor: {r: 0.83823526, g: 0.19723181, b: 0.33458948, a: 1}
+  altPlayerColor: {r: 0.5147059, g: 0.15869229, b: 0.09839966, a: 1}
   playerNum: 0
   moveSpeed: 14
   dashSpeed: 0
   bumpMagnitude: 12
   lost: 0
-  burstPrefab: {fileID: 114103979013594792, guid: 12bc929f5fcea4ee188fec7df999856c,
+  deathPrefab: {fileID: 1994720922703304, guid: 2b086d609a0cd4ae289f437c2cade0f9,
     type: 2}
 --- !u!114 &114586350163476988
 MonoBehaviour:

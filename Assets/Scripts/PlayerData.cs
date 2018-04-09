@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour {
 
-	public Color playerColor;
+	public Color playerColor, altPlayerColor;
 	public int playerNum;
 	public float moveSpeed, dashSpeed, bumpMagnitude;
 	public bool lost;
-	public PrefabBurst burstPrefab;
+	public GameObject deathPrefab;
 
 	private PlayerInput playerInput;
 	private Rigidbody rigidbody;
@@ -41,12 +41,12 @@ public class PlayerData : MonoBehaviour {
 
 	void checkRingEdge(){
 		var heading = Vector3.zero - transform.position;
-		print(heading.sqrMagnitude);
-		if (transform.position.y < 5 && heading.sqrMagnitude > 75f) {
+		if (transform.position.y < 5 && heading.sqrMagnitude > 78f) {
 			lost = true;
 			GameManager.Instance.findWinningPlayer(playerNum);
-			PrefabBurst pb = Instantiate(burstPrefab, transform.position, Quaternion.identity);
-			pb.burstColor = playerColor;
+			GameObject g = Instantiate(deathPrefab, transform.position, Quaternion.Euler(90,0,0));
+			var main = g.GetComponentInChildren<ParticleSystem>().main;
+			main.startColor = new ParticleSystem.MinMaxGradient(playerColor, altPlayerColor);
 			Destroy(this.gameObject);
 		}
 	}

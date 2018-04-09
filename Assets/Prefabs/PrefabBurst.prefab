@@ -52,16 +52,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minVelocity: 1
-  maxVelocity: 20
+  maxVelocity: 10
   scaleMax: 2
-  colorOffset: 0
-  fadeAmount: 2
-  minParticles: 9
-  maxParticles: 15
+  colorOffset: 0.3
+  minParticles: 1
+  maxParticles: 20
   particlePrefab: {fileID: 1681459784514944, guid: 8c35d17ed29b64cf8b2cddaba64f3574,
     type: 2}
-  burst: 0
+  timeToFade: 1
+  maxFadeTime: 4
   monoColor: 0
   burstColor: {r: 0, g: 0, b: 0, a: 0}
-  timerEnded: 0
-  burstTimer: 0

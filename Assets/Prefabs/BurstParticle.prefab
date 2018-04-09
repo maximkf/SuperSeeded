@@ -23,7 +23,8 @@ GameObject:
   - component: {fileID: 135306045302846482}
   - component: {fileID: 23930377043144828}
   - component: {fileID: 54505036500258550}
-  - component: {fileID: 114259713796436056}
+  - component: {fileID: 114467766794150842}
+  - component: {fileID: 114519752850427376}
   m_Layer: 9
   m_Name: BurstParticle
   m_TagString: Particle
@@ -38,8 +39,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1681459784514944}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: 1.34, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -100,7 +101,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114259713796436056
+--- !u!114 &114467766794150842
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -108,11 +109,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1681459784514944}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b889dcc76f9fa4bc5a9f54c3541b9bcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114519752850427376
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1681459784514944}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73bc02fe432274cddb516a5146257581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeAmount: 0
-  fadeOver: 0
   destroyOnFadeOver: 1
 --- !u!135 &135306045302846482
 SphereCollider:

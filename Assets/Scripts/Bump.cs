@@ -6,13 +6,16 @@ public class Bump : MonoBehaviour {
 
 	public int numberID;
 	public float bumpMagnitude;
+	public bool hasGraphic;
 	private Vector3 bumpForce;
 	// Use this for initialization
 	void Start () {
 		//use this if the bump has a graphic
-		Quaternion bumpRotation = Quaternion.identity;
-		bumpRotation.eulerAngles = new Vector3(0, Random.Range(0, 360), 0);
-		transform.rotation = bumpRotation;
+		if(hasGraphic){
+			Quaternion bumpRotation = Quaternion.identity;
+			bumpRotation.eulerAngles = new Vector3(0, Random.Range(0, 360), 0);
+			transform.rotation = bumpRotation;
+		}
 		// transform.localScale *= bumpScale;
 	}
 
