@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager> {
 
@@ -8,25 +9,53 @@ public class UIManager : Singleton<UIManager> {
 	public Carousel[] carousels;
 	public Animator[] icons;
 	public int totalSelected;
-	public bool countDownOver;
-	private Canvas canvasGame;
+	public bool countDownOver, fadeOver;
+	public Text winText, endCountText;
+	public Text[] selectedText;
+	// private Canvas gameCanvas;
+	private Animator canvasAnimator;
 
 	private bool[] playersSelected  = {false, false};
 
 	public void countDown(int bit){
-		if(canvasGame == null)
-			canvasGame = GameObject.Find("Canvas").GetComponent<Canvas>();
+		if(canvasAnimator == null)
+			canvasAnimator = GetComponent<Animator>();
 
-		if(bit == 0){
-			countDownOver = false;
-			canvasGame.GetComponent<Animator>().SetTrigger("CountDown");
-		}else if(bit == 1){
-			countDownOver = true;
+		switch(bit){
+			case 0:
+				countDownOver = false;
+				canvasAnimator.SetTrigger("Flash");
+				canvasAnimator.SetTrigger("CountDown");
+			break;
+			case 1:
+				countDownOver = true;
+			break;
+			case 2:
+				countDownOver = false;
+				canvasAnimator.SetTrigger("SelectCountDown");
+			break;
+			default:
+			break;
 		}
 	}
 
-	public void displayRematch(){
+	public void displayWin(GameObject winningPlayer,int waitTime){
+		countDown(2);
+		StartCoroutine(countDownCoroutine(waitTime));
+		winText.text = winningPlayer.name.Replace("(Clone)","") + " Wins!";
+	}
 
+	IEnumerator countDownCoroutine(int t){
+		int count = t;
+
+		while (count > 0){
+			endCountText.text = count.ToString();
+			yield return new WaitForSeconds(1);
+			count --;
+			yield return null;
+		}
+		if(count == 0)
+			countDownOver = true;
 	}
 
 	public void swapPlayer(int num, string direction){
@@ -42,6 +71,7 @@ public class UIManager : Singleton<UIManager> {
 	public void setBackgroundColor(int num, GameObject focusObject){
 		PlayerData pData = focusObject.GetComponent<PlayerData>();
 		backgrounds[num].material.color = pData.playerColor;
+		selectedText[num].text = carousels[num].selectedObjectName.Replace("(Clone)","");
 	}
 
 	public void selectPlayer(int num){
@@ -51,11 +81,22 @@ public class UIManager : Singleton<UIManager> {
 	}
 
 	void UpdateSelectIcons(int num){
-		print("updateIcons" + num);
 		if(!playersSelected[num]){
 			totalSelected ++;
 			icons[num].SetBool("selected", true);
 			playersSelected[num] = true;
 		}
+	}
+
+	public void timeOut(int bit){
+		if(canvasAnimator == null)
+			canvasAnimator = GetComponent<Animator>();
+
+		if(bit == 0){
+			fadeOver = false;
+			canvasAnimator.SetTrigger("FadeOut");
+		}
+		if(bit == 1)
+			fadeOver = true;
 	}
 }

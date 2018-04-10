@@ -24,7 +24,7 @@ public class RandomTexture : MonoBehaviour {
 		randomPattern = RandomPattern();
 	}
 
-	public void toggleRandom(bool isTitle, bool toggle)
+	public void toggleRandom(bool toggle)
 	{
 		if(toggle){
 			rend.enabled = true;

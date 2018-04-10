@@ -6,6 +6,7 @@ using InControl;
 public class PlayerInput : MonoBehaviour {
 
 	public int playerNum;
+	public bool hasInput;
 	// public bool usingKeyboard;
 	private InputDevice inputDevice;
 	private int lastDeviceCount;
@@ -38,6 +39,8 @@ public class PlayerInput : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
+		checkForInput();
+
 		if(InputManager.Devices.Count != lastDeviceCount)
 			getInputDevice();
 
@@ -46,6 +49,10 @@ public class PlayerInput : MonoBehaviour {
 
 		if(inputDevice != null && gameOn)
 			UpdatePlayerActions();
+
+		if(!UIManager.Instance.countDownOver && GameManager.Instance.currentGameState.ToString()
+		== "GameEnd" && inputDevice.Action1.WasPressed)
+			GameManager.Instance.rematch();
 	}
 
 	public void getInputDevice(){
@@ -83,7 +90,19 @@ public class PlayerInput : MonoBehaviour {
 			growScript.grow = true;
 			// moveScript.doDash(moveDirection);
 		}
+	}
 
+	void checkForInput(){
+		if(inputDevice != null && !inputDevice.AnyButton.IsPressed && !inputDevice.DPad.IsPressed
+		&& !inputDevice.Direction.HasChanged){
+			hasInput = false;
+		}else if(inputDevice == null){
+			hasInput = false;
+		}else{
+			hasInput = true;
+		}
+
+		GameManager.Instance.hasInput = hasInput;
 	}
 
 }

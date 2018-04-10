@@ -41,7 +41,7 @@ public class Bump : MonoBehaviour {
 			//bumpForce scaled to a set magnitude devided by distance sqr
       bumpForce = bumpDirection / distance;//normalized direction
       bumpForce *= (mag * 5f) / (distance * distance);
-			print(distance);
+
 			other.GetComponent<Rigidbody>().AddForce(bumpForce, ForceMode.Impulse);
       // print(bumpMagnitude - bumpDirection.magnitude * falloff);
       // player.moveScript.wasBumped(bumpForce);

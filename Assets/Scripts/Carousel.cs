@@ -5,9 +5,11 @@ using UnityEngine;
 public class Carousel : MonoBehaviour {
 
 	public GameObject[] objects;
-	public float speed, radius, spinRate;
+	public string selectedObjectName;
+	public float speed, radius, spinRate, offset;
 	public int selectedObject;
 	public bool spinActive;
+	public Camera camera;
 
 	private float angleIncrement, angle;
 	private Vector3 startPoint;
@@ -31,24 +33,62 @@ public class Carousel : MonoBehaviour {
 	void Update () {
 		float step = speed * angle * Time.deltaTime;
 
-		angleIncrement = angle * selectedObject;
+		angleIncrement = angle * selectedObject - offset;
 		targetRotation.eulerAngles = new Vector3 (0, angleIncrement, 0);
 
-		transform.rotation = Quaternion.RotateTowards(transform.rotation,
-		targetRotation, step);
+		camera.transform.rotation = targetRotation;
 
 		if(spinActive)
 			Spin(selectedObject);
+
+	}
+
+	void ArrangeObjects(){
+		carouselObjects.Clear();
+
+		//rotate by the angle * array position
+		for(int i = 0; i < objects.Length; i++)
+		{
+			GameObject go = Instantiate(objects[i], startPoint, Quaternion.identity, this.transform);
+			go.transform.RotateAround (transform.position, Vector3.up, angle * i);
+			carouselObjects.Add(go);
+		}
+		pickRandomStart((int)Random.Range(0,objects.Length));
+		print(carouselObjects.Count);
+	}
+
+	void pickRandomStart(int num){
+		selectedObject = num;
+
+		camera.transform.rotation = targetRotation;
+		
+		selectedObjectName = carouselObjects[selectedObject].name;
+		UIManager.Instance.setBackgroundColor(playerNumber, objects[selectedObject]);
+	}
+
+	void Spin(int num){
+		// foreach(GameObject g in carouselObjects){
+		// 	Quaternion rot = g.transform.rotation;
+		// 	rot.eulerAngles += new Vector3 (0, spinRate, 0);
+		// 	g.transform.rotation = rot;
+		// }
+		for(int i = 0; i < carouselObjects.Count; i++){
+			if(i == selectedObject){
+				Quaternion rot = carouselObjects[i].transform.rotation;
+				rot.eulerAngles += new Vector3 (0, spinRate, 0);
+				carouselObjects[i].transform.rotation = rot;
+			}
+		}
 	}
 
 	public void rotate(string direction){
 		switch(direction)
 		{
 			case "Left":
-				selectedObject --;
+				selectedObject ++;
 			break;
 			case "Right":
-				selectedObject ++;
+				selectedObject --;
 			break;
 			default:
 			break;
@@ -58,36 +98,8 @@ public class Carousel : MonoBehaviour {
 			selectedObject = objects.Length-1;
 		else if(selectedObject > objects.Length-1)
 			selectedObject = 0;
-
-		print(selectedObject + "/" + objects.Length);
+		selectedObjectName = carouselObjects[selectedObject].name;
 		UIManager.Instance.setBackgroundColor(playerNumber, objects[selectedObject]);
 	}
 
-	void pickRandomStart(int num){
-		selectedObject = num;
-
-		transform.rotation = targetRotation;
-
-		UIManager.Instance.setBackgroundColor(playerNumber, objects[selectedObject]);
-	}
-
-	void ArrangeObjects(){
-		carouselObjects.Clear();
-		pickRandomStart((int)Random.Range(0,objects.Length));
-		//rotate by the angle * array position
-		for(int i = 0; i < objects.Length; i++)
-		{
-			GameObject go = Instantiate(objects[i], startPoint, Quaternion.identity, this.transform);
-			go.transform.RotateAround (transform.position, Vector3.up, angle * -i);
-			carouselObjects.Add(go);
-		}
-	}
-
-	void Spin(int num){
-		foreach(GameObject g in carouselObjects){
-			Quaternion rot = g.transform.rotation;
-			rot.eulerAngles += new Vector3 (0, spinRate, 0);
-			g.transform.rotation = rot;
-		}
-	}
 }

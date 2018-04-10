@@ -1,4 +1,4 @@
-﻿Shader "Custom/Particle Random Color" {
+﻿Shader "Custom/Particle Vertex Color" {
 	Properties {
 		_Color ("Color", Color) = (1,1,1,1)
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
