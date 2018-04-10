@@ -34,6 +34,8 @@ public class UIManager : Singleton<UIManager> {
 				countDownOver = false;
 				canvasAnimator.SetTrigger("SelectCountDown");
 			break;
+			// case 3:
+			// 	canvasAnimator.SetBool("Rematch", true);
 			default:
 			break;
 		}
