@@ -46,7 +46,7 @@ public class RandomTexture : MonoBehaviour {
 			bgRend.material.color = colors[color2];
 			yield return new WaitForSeconds(waitTime);
 		}
-		yield return null;
+		// yield break;
 	}
 
 	void getRandomUnique(){

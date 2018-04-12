@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberID: 0
   bumpMagnitude: 0
+  hasGraphic: 0
 --- !u!135 &135094189653082254
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -164,5 +165,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.8
+  m_Radius: 4
   m_Center: {x: 0, y: 0, z: 0}

@@ -56,8 +56,11 @@ public class UIManager : Singleton<UIManager> {
 			count --;
 			yield return null;
 		}
-		if(count == 0)
+		if(count == 0){
 			countDownOver = true;
+			count = t;
+			yield break;
+		}
 	}
 
 	public void swapPlayer(int num, string direction){

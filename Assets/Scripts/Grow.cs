@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Grow : MonoBehaviour {
 
-	public float growTime, growMultiplier;
-	public bool grow;
+	public float growTime, growMultiplier, growCoolDown;
 	public GameObject bumpPrefab;
 	private PlayerData playerData;
 	private int playerNum;
 	private bool bumped;
 	private Vector3 originalScale, alteredScale;
-	private float deltaGrowTime, growRate, yHeight;
+	private float deltaGrowTime, growRate, yHeight, coolDown;
 	// Use this for initialization
 	void Start () {
 		originalScale = transform.localScale;
@@ -22,36 +21,45 @@ public class Grow : MonoBehaviour {
 	void FixedUpdate(){
 		//find the fraction of multiplier in total growtime over change in time
 		growRate = growTime/growTime * Time.deltaTime;
-		//while room to grow
-		if(grow && growTime < deltaGrowTime){
-			resetScale();
 
-		}
-
-		if(!grow){
-			yHeight = transform.position.y;
-		}else{
-			doGrow();
-		}
-	}
-
-	void doGrow(){
-		deltaGrowTime += growRate;//advance total growth;
-		float growAmount = (growMultiplier - 1f) * (deltaGrowTime/growTime);
-		alteredScale = originalScale + originalScale * growAmount;
-		transform.localScale = alteredScale;
 		if(deltaGrowTime > growTime * 0.5f && !bumped){
-			Vector3 bumpLocation = new Vector3(transform.position.x, 0.8f, transform.position.z);
-			GameObject bump = Instantiate(bumpPrefab, bumpLocation, Quaternion.identity);
-			bump.GetComponent<Bump>().setBump(playerData.playerNum,playerData.bumpMagnitude);
-			bumped = true;
+			Invoke("MakeBump",0);
+		}
+
+		coolDown -= Time.deltaTime;
+	}
+
+	public void startGrow(){
+		if(coolDown <= 0f){
+			deltaGrowTime = 0;
+			yHeight = transform.position.y;
+			StartCoroutine("DoGrow");
 		}
 	}
 
-	void resetScale(){
-		grow = false;
+	IEnumerator DoGrow(){
+		coolDown = growCoolDown;
+		while(deltaGrowTime < growTime){
+			deltaGrowTime += growRate;//advance total growth;
+			float growAmount = (growMultiplier - 1f) * (deltaGrowTime/growTime);
+			alteredScale = originalScale + originalScale * growAmount;
+			transform.localScale = alteredScale;
+			yield return null;
+		}
+		ResetScale();
+		yield break;
+	}
+
+	void MakeBump(){
+		bumped = true;
+		var bumpPlaneHeight = playerData.ringSize.y * 0.5f;
+		Vector3 bumpLocation = new Vector3(transform.position.x, bumpPlaneHeight, transform.position.z);
+		GameObject bump = Instantiate(bumpPrefab, bumpLocation, Quaternion.identity);
+		bump.GetComponent<Bump>().setBump(playerData.playerNum,playerData.bumpMagnitude);
+	}
+
+	void ResetScale(){
 		bumped = false;
-		deltaGrowTime = 0f;
 		transform.localScale = originalScale;
 		alteredScale = originalScale;
 		transform.position = new Vector3(transform.position.x, yHeight, transform.position.z);

@@ -71,8 +71,9 @@ public class GameManager : SingletonPersistent<GameManager> {
 	void GameReady(){
 		endScreen = false;
 		if(!playersSpawned){
+			var ringCollider = GameObject.Find("Ring").GetComponent<MeshCollider>();
 			UIManager.Instance.countDown(0);
-			SpawnPlayers();
+			SpawnPlayers(ringCollider);
 			playersSpawned = true;
 		}
 
@@ -122,15 +123,14 @@ public class GameManager : SingletonPersistent<GameManager> {
 		currentGameState = GameState.GameEnd;
 	}
 
-	void SpawnPlayers(){
+	void SpawnPlayers(MeshCollider ring){
 		activePlayers.Clear();
 		for(int i = 0; i < spawnPoints.Length; i++){
 			if(spawnPoints[i] == null){
 				GameObject sp = GameObject.Find("SpawnPoint" + i.ToString());
 				spawnPoints[i] = sp.GetComponent<SpawnPoint>();
 			}
-			spawnPoints[i].spawnObject(playersToSpawn[i]);
-			activePlayers[i].playerNum = i;
+			spawnPoints[i].spawnObject(playersToSpawn[i], i, ring);
 		}
 		playersSpawned = true;
 	}

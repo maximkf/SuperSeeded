@@ -31,7 +31,7 @@ public class Carousel : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		float step = speed * angle * Time.deltaTime;
+		// float step = speed * angle * Time.deltaTime;
 
 		angleIncrement = angle * selectedObject - offset;
 		targetRotation.eulerAngles = new Vector3 (0, angleIncrement, 0);
@@ -61,7 +61,7 @@ public class Carousel : MonoBehaviour {
 		selectedObject = num;
 
 		camera.transform.rotation = targetRotation;
-		
+
 		selectedObjectName = carouselObjects[selectedObject].name;
 		UIManager.Instance.setBackgroundColor(playerNumber, objects[selectedObject]);
 	}

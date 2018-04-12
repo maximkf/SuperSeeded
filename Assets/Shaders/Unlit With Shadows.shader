@@ -20,6 +20,10 @@ Shader "Unlit/Unlit With Shadows" {
 				#include "AutoLight.cginc"
 
 				half4 _Color;
+				struct appdata
+				{
+					float4 vertex : POSITION;
+				};
 
 				struct v2f
 				{

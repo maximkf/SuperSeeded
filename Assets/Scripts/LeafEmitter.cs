@@ -25,9 +25,10 @@ public class LeafEmitter : MonoBehaviour {
 		for(int i = 0; i < leavesToMake; i++){
 			Vector3 startPosition = new Vector3(Random.Range(size.x, -size.x),
 			Random.Range(size.y, -size.y),Random.Range(size.z, -size.z));
-			Vector3 velocity = RandomVector.getRandomUnitVector();
 			GameObject leaf = Instantiate(leafParticle, startPosition += transform.position, Random.rotation);
-			leaf.GetComponent<Rigidbody>().velocity = velocity * Random.Range(minSpeed, maxSpeed);
+			var rb = leaf.GetComponent<Rigidbody>();
+			rb.velocity = RandomVector.getRandomUnitVector() * Random.Range(minSpeed, maxSpeed);
+			rb.AddTorque(RandomVector.getRandomUnitVector());
 			leaf.transform.localScale *= Random.Range(minScale, maxScale);
 			leaf.transform.parent = this.transform;
 		}

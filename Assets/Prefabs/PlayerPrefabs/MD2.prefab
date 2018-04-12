@@ -224,9 +224,9 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1951493815614400}
   serializedVersion: 2
-  m_Mass: 1.1
+  m_Mass: 3.2
   m_Drag: 0.5
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.08
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 1
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   growTime: 0.12
   growMultiplier: 2
-  grow: 0
+  growCoolDown: 0.5
   bumpPrefab: {fileID: 1647763495091988, guid: fd4e9b7c7e829484e885bbc81a492967, type: 2}
 --- !u!114 &114783807895604610
 MonoBehaviour:
@@ -286,10 +286,11 @@ MonoBehaviour:
   playerColor: {r: 0.91372555, g: 0.83921576, b: 0.30980393, a: 1}
   altPlayerColor: {r: 0.6627451, g: 0.72156864, b: 0.2901961, a: 1}
   playerNum: 0
-  moveSpeed: 14
+  moveSpeed: 22
   dashSpeed: 10
-  bumpMagnitude: 12
+  bumpMagnitude: 20
   lost: 0
   hasInput: 0
   deathPrefab: {fileID: 1994720922703304, guid: 2b086d609a0cd4ae289f437c2cade0f9,
     type: 2}
+  ringSize: {x: 0, y: 0, z: 0}
