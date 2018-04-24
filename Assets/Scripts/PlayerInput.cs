@@ -87,7 +87,7 @@ public class PlayerInput : MonoBehaviour {
 		// }
 			moveScript.doMove(moveDirection);
 		}else if(inputDevice.Action1.WasPressed){
-			growScript.startGrow();
+			// growScript.startGrow();
 			// moveScript.doDash(moveDirection);
 		}
 	}

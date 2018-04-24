@@ -23,4 +23,8 @@ public class Move : MonoBehaviour {
 		Vector3 force = direction * dashSpeed;
 		rigidbody.AddForce(force, ForceMode.Force);
 	}
+
+	public void doBump(Vector3 force){
+		rigidbody.AddForce(force, ForceMode.Impulse);
+	}
 }

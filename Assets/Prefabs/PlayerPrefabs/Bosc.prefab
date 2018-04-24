@@ -41,7 +41,8 @@ GameObject:
   - component: {fileID: 114814209419045958}
   - component: {fileID: 54862152159624056}
   - component: {fileID: 114714904813437208}
-  - component: {fileID: 135142514702612262}
+  - component: {fileID: 114154678356867554}
+  - component: {fileID: 135931749132689240}
   m_Layer: 8
   m_Name: Bosc
   m_TagString: Player
@@ -124,7 +125,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1944148771200508}
   serializedVersion: 2
-  m_Mass: 3.2
+  m_Mass: 1
   m_Drag: 0.5
   m_AngularDrag: 0.08
   m_UseGravity: 1
@@ -146,6 +147,19 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: 5d45713cddb0e429cad9cf9ced5084cd, type: 3}
+--- !u!114 &114154678356867554
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1944148771200508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 759857a782260495f8cdf7e88447d4dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bumpMultiplier: 1
+  threshold: 10
 --- !u!114 &114197210181767774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -162,7 +176,7 @@ MonoBehaviour:
   playerNum: 0
   moveSpeed: 24
   dashSpeed: 10
-  bumpMagnitude: 50
+  bumpMagnitude: 20
   lost: 0
   hasInput: 0
   deathPrefab: {fileID: 1994720922703304, guid: 2b086d609a0cd4ae289f437c2cade0f9,
@@ -174,7 +188,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1944148771200508}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a52deec93cbd42bfb2cab42e942df20, type: 3}
   m_Name: 
@@ -194,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3c8b3c1c64f549beb144a217dffdaa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &135142514702612262
+--- !u!135 &135931749132689240
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -202,7 +216,7 @@ SphereCollider:
   m_GameObject: {fileID: 1944148771200508}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 4
+  m_Radius: 1.13
   m_Center: {x: 0, y: 0, z: 0}

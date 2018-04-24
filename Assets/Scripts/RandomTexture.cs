@@ -39,7 +39,7 @@ public class RandomTexture : MonoBehaviour {
 	IEnumerator RandomPattern(){
 		while(true){
 			getRandomUnique();
-			float textureScale = Random.Range(1.5f, 4);
+			float textureScale = Random.Range(2, 3);//TODO: consider changing from hard code
 			rend.material.mainTexture = textures[Random.Range(0, textures.Length)];
 			rend.material.mainTextureScale = new Vector2(textureScale, textureScale);
 			rend.material.color = colors[color1];

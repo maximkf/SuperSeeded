@@ -23,7 +23,8 @@ GameObject:
   - component: {fileID: 114979657932813780}
   - component: {fileID: 114142801763749444}
   - component: {fileID: 114790322139710372}
-  - component: {fileID: 135791843002382010}
+  - component: {fileID: 114154099048450394}
+  - component: {fileID: 135602227322517846}
   m_Layer: 8
   m_Name: Victoria
   m_TagString: Player
@@ -88,7 +89,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1795860268593582}
   m_LocalRotation: {x: -0.6427876, y: 0, z: 0, w: 0.7660445}
-  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4534420397171558}
@@ -101,7 +102,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1834777789680294}
   m_LocalRotation: {x: -0.6427876, y: 0, z: 0, w: 0.7660445}
-  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4534420397171558}
@@ -114,7 +115,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1674767995366098}
   m_LocalRotation: {x: -0.6427876, y: 0, z: 0, w: 0.7660445}
-  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4534420397171558}
@@ -225,7 +226,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1062494869816656}
   serializedVersion: 2
-  m_Mass: 3.2
+  m_Mass: 1
   m_Drag: 0.5
   m_AngularDrag: 0.08
   m_UseGravity: 1
@@ -258,13 +259,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3c8b3c1c64f549beb144a217dffdaa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114790322139710372
+--- !u!114 &114154099048450394
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1062494869816656}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 759857a782260495f8cdf7e88447d4dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bumpMultiplier: 1
+  threshold: 10
+--- !u!114 &114790322139710372
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1062494869816656}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a52deec93cbd42bfb2cab42e942df20, type: 3}
   m_Name: 
@@ -289,13 +303,13 @@ MonoBehaviour:
   playerNum: 0
   moveSpeed: 24
   dashSpeed: 10
-  bumpMagnitude: 50
+  bumpMagnitude: 20
   lost: 0
   hasInput: 0
   deathPrefab: {fileID: 1994720922703304, guid: 2b086d609a0cd4ae289f437c2cade0f9,
     type: 2}
   ringSize: {x: 0, y: 0, z: 0}
---- !u!135 &135791843002382010
+--- !u!135 &135602227322517846
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -303,7 +317,7 @@ SphereCollider:
   m_GameObject: {fileID: 1062494869816656}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
-  m_Center: {x: 0, y: -1.43, z: 0}
+  m_Radius: 1.13
+  m_Center: {x: 0, y: 0, z: 0}
