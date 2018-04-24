@@ -23,7 +23,7 @@ public class Grow : MonoBehaviour {
 		growRate = growTime/growTime * Time.deltaTime;
 
 		if(deltaGrowTime > growTime * 0.5f && !bumped){
-			Invoke("MakeBump",0);
+			// Invoke("MakeBump",0);
 		}
 
 		coolDown -= Time.deltaTime;
@@ -39,6 +39,7 @@ public class Grow : MonoBehaviour {
 
 	IEnumerator DoGrow(){
 		coolDown = growCoolDown;
+		Invoke("MakeBump",0);
 		while(deltaGrowTime < growTime){
 			deltaGrowTime += growRate;//advance total growth;
 			float growAmount = (growMultiplier - 1f) * (deltaGrowTime/growTime);

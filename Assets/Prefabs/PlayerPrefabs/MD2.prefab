@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 114783807895604610}
   - component: {fileID: 114185336273114350}
   - component: {fileID: 114530110536178634}
+  - component: {fileID: 135278553012314858}
   m_Layer: 8
   m_Name: MD2
   m_TagString: Player
@@ -268,8 +269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a52deec93cbd42bfb2cab42e942df20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growTime: 0.12
-  growMultiplier: 2
+  growTime: 0.1
+  growMultiplier: 1.6
   growCoolDown: 0.5
   bumpPrefab: {fileID: 1647763495091988, guid: fd4e9b7c7e829484e885bbc81a492967, type: 2}
 --- !u!114 &114783807895604610
@@ -286,11 +287,23 @@ MonoBehaviour:
   playerColor: {r: 0.91372555, g: 0.83921576, b: 0.30980393, a: 1}
   altPlayerColor: {r: 0.6627451, g: 0.72156864, b: 0.2901961, a: 1}
   playerNum: 0
-  moveSpeed: 22
+  moveSpeed: 24
   dashSpeed: 10
-  bumpMagnitude: 20
+  bumpMagnitude: 50
   lost: 0
   hasInput: 0
   deathPrefab: {fileID: 1994720922703304, guid: 2b086d609a0cd4ae289f437c2cade0f9,
     type: 2}
   ringSize: {x: 0, y: 0, z: 0}
+--- !u!135 &135278553012314858
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1951493815614400}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: 0, y: -1.43, z: 0}

@@ -7,7 +7,7 @@ public class Bump : MonoBehaviour {
 	public int numberID;
 	public float bumpMagnitude;
 	public bool hasGraphic;
-	private Vector3 bumpForce, bumpDirection;
+	private Vector3 bumpForce, bumpDirection, bumpOrigin;
 	// Use this for initialization
 	void Start () {
 		//use this if the bump has a graphic
@@ -25,6 +25,7 @@ public class Bump : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
+
     if(other.gameObject.tag == "Player" && numberID !=
 		other.transform.parent.gameObject.GetComponent<PlayerData>().playerNum){
       doBump(other.transform.parent.gameObject, bumpMagnitude);
@@ -36,23 +37,28 @@ public class Bump : MonoBehaviour {
   void doBump(GameObject other, float mag){
 			//a vector pointing from center to other object
       bumpDirection = new Vector3 (other.transform.position.x - transform.position.x,
-      transform.position.y, other.transform.position.z - transform.position.z);
+      other.transform.position.y, other.transform.position.z - transform.position.z);
+			print (bumpDirection);
+			bumpOrigin = new Vector3 (transform.position.x,
+			other.transform.position.y, transform.position.z);
 			float att = Vector3.Dot(bumpDirection, bumpDirection);
 			float atten = 1.0f/(att+1);
 
-			float distance = Mathf.Clamp(bumpDirection.magnitude, 2f, 10f);
+			float distance = Mathf.Clamp(bumpDirection.magnitude, 1f, 12f);
 			//bumpForce scaled to a set magnitude devided by distance sqr
       bumpForce = bumpDirection / distance;//normalized direction
       // bumpForce *= (mag * mag) / (distance * distance);
-			bumpForce *= mag * atten;
+			bumpForce = new Vector3 (bumpForce.x * mag,
+      bumpForce.y, bumpForce.z* mag);
+			//* atten;
 			other.GetComponent<Rigidbody>().AddForce(bumpForce, ForceMode.Impulse);
       // print(bumpMagnitude - bumpDirection.magnitude * falloff);
       // player.moveScript.wasBumped(bumpForce);
   }
 	void OnDrawGizmos(){
 			Gizmos.color = Color.red;
-			Gizmos.DrawLine(transform.position, transform.position+bumpForce);
-			Gizmos.DrawLine(transform.position, transform.position+bumpDirection);
+
+			Gizmos.DrawLine(bumpOrigin, transform.position+bumpForce);
 	}
 	//animate and trigger destroy script with event
 }

@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114814209419045958}
   - component: {fileID: 54862152159624056}
   - component: {fileID: 114714904813437208}
+  - component: {fileID: 135142514702612262}
   m_Layer: 8
   m_Name: Bosc
   m_TagString: Player
@@ -159,9 +160,9 @@ MonoBehaviour:
   playerColor: {r: 0.59607846, g: 0.40000004, b: 0.17254902, a: 1}
   altPlayerColor: {r: 0.9485294, g: 0.8715274, b: 0.68349916, a: 1}
   playerNum: 0
-  moveSpeed: 22
+  moveSpeed: 24
   dashSpeed: 10
-  bumpMagnitude: 20
+  bumpMagnitude: 50
   lost: 0
   hasInput: 0
   deathPrefab: {fileID: 1994720922703304, guid: 2b086d609a0cd4ae289f437c2cade0f9,
@@ -178,8 +179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a52deec93cbd42bfb2cab42e942df20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growTime: 0.12
-  growMultiplier: 2
+  growTime: 0.1
+  growMultiplier: 1.6
   growCoolDown: 0.5
   bumpPrefab: {fileID: 1647763495091988, guid: fd4e9b7c7e829484e885bbc81a492967, type: 2}
 --- !u!114 &114814209419045958
@@ -193,3 +194,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3c8b3c1c64f549beb144a217dffdaa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &135142514702612262
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1944148771200508}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 4
+  m_Center: {x: 0, y: 0, z: 0}
