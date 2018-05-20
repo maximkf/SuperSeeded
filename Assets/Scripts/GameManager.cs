@@ -17,7 +17,7 @@ public class GameManager : SingletonPersistent<GameManager> {
 
 	private bool playersSpawned, endScreen;
 	private int winnerNum;
-	private float idleTime;
+	private float idleTime, gameTimeScale;
 	private GameObject winningPlayer;
 
 
@@ -45,6 +45,7 @@ public class GameManager : SingletonPersistent<GameManager> {
 
 		if(playersConnected < 0)
 			playersConnected = 0;
+
 	}
 
 	void Title(){
@@ -96,6 +97,10 @@ public class GameManager : SingletonPersistent<GameManager> {
 			playersSpawned = false;
 			currentGameState = GameState.PlayerSelect;
 		}
+	}
+
+	public void slowTime(float t){
+		Time.timeScale = t;
 	}
 
 	IEnumerator EndSequence(){

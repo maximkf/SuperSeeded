@@ -6,9 +6,9 @@ public class PlayerData : MonoBehaviour {
 
 	public Color playerColor, altPlayerColor;
 	public int playerNum;
-	public float moveSpeed, dashSpeed, bumpMagnitude;
+	public float bumpMagnitude;
 	public bool lost, hasInput;
-	public GameObject deathPrefab;
+	public GameObject deathPrefab, dashCollider;
 	public Vector3 ringSize;
 
 	private PlayerInput playerInput;
@@ -23,7 +23,8 @@ public class PlayerData : MonoBehaviour {
 	IEnumerator GameReady(){
 		rigidbody = GetComponent<Rigidbody>();
 		rigidbody.isKinematic = false;
-
+		// GameObject dCol = Instantiate(dashCollider, transform.position, Quaternion.identity);
+		// dCol.transform.parent = this.gameObject.transform;
 		// rigidbody = gameObject.AddComponent(typeof(Rigidbody)) as Rigidbody;
 		playerInput = gameObject.AddComponent(typeof(PlayerInput)) as PlayerInput;
 		yield return new WaitForSeconds(3);

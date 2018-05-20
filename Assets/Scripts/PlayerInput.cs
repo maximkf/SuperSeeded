@@ -11,10 +11,12 @@ public class PlayerInput : MonoBehaviour {
 	private InputDevice inputDevice;
 	private int lastDeviceCount;
 	private bool selectScene, gameOn;
+	private float dashAngle;
 	private PlayerSelect playerSelect;
 	private Move moveScript;
-	private Grow growScript;
-	private Vector3 moveDirection;
+	private Dash dashScript;
+	// private Grow growScript;
+	private Vector3 inputDirection;
 	// Use this for initialization
 	void Start () {
 		// selectScene = false;
@@ -33,7 +35,8 @@ public class PlayerInput : MonoBehaviour {
 		playerNum = num;
 		getInputDevice();
 		moveScript = GetComponent<Move>();
-		growScript = GetComponent<Grow>();
+		dashScript = GetComponent<Dash>();
+		// growScript = GetComponent<Grow>();
 		gameOn = true;
 	}
 
@@ -81,15 +84,21 @@ public class PlayerInput : MonoBehaviour {
 	void UpdatePlayerActions(){
 		// if(inputDevice.LeftStick.HasChanged || inputDevice.DPad.HasChanged ){
 			// print("check");
-		moveDirection = Vector3.right * inputDevice.Direction.X
+		inputDirection = Vector3.right * inputDevice.Direction.X
 				+ Vector3.forward * inputDevice.Direction.Y;
-		if(!inputDevice.Action1.WasPressed){
+		if(!dashScript.dash){
 		// }
-			moveScript.doMove(moveDirection);
-		}else if(inputDevice.Action1.WasPressed){
-			// growScript.startGrow();
-			// moveScript.doDash(moveDirection);
+			moveScript.doMove(inputDirection);
 		}
+		if(inputDevice.Action1.WasPressed && inputDirection.sqrMagnitude > 0.1f){
+			// growScript.startGrow();
+			dashScript.doDash(inputDirection);
+		}
+
+		// if(dashScript.dash && inputDevice.Direction.HasChanged){
+		// 	print("canceled dash");
+		// 	dashScript.doBreak();
+		// }
 	}
 
 	void checkForInput(){
@@ -104,5 +113,19 @@ public class PlayerInput : MonoBehaviour {
 
 		GameManager.Instance.hasInput = hasInput;
 	}
+
+	// bool changedDirection(){
+	// 	if(dashAngle - getInputAngle() > 0.5f){
+	// 		return true;
+	// 	}else{
+	// 		return false;
+	// 	}
+	// }
+	//
+	// float getInputAngle(){
+	// 	Vector3 targetDir = inputDirection - transform.position;
+	// 	float angle = Vector3.Angle(targetDir, transform.forward);
+	// 	return angle;
+	// }
 
 }

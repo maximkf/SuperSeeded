@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 111130781775996538}
   - component: {fileID: 114020157705444900}
   - component: {fileID: 114283067669171788}
+  - component: {fileID: 114061675815912130}
   m_Layer: 0
   m_Name: BumpPrefab
   m_TagString: Untagged
@@ -121,7 +122,7 @@ Animation:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1647763495091988}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: c496a7c62d0df4401bb603aa1083aa34, type: 2}
   m_Animations:
@@ -141,6 +142,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b889dcc76f9fa4bc5a9f54c3541b9bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114061675815912130
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1647763495091988}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13481b5b7f4654da1aa7c12002df9f56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slowAmount: 0.05
+  duration: 0.05
+  timeReset: 0
 --- !u!114 &114283067669171788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -152,9 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7152f0fe0c3e048489c6547e877b667b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberID: 0
-  bumpMagnitude: 0
-  hasGraphic: 0
+  target: {fileID: 0}
 --- !u!135 &135094189653082254
 SphereCollider:
   m_ObjectHideFlags: 1
